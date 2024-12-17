@@ -1,105 +1,65 @@
 <div class="container-fluid">
   <nav class="navbar navbar-expand-lg navbar-light shadow-lg p-3">
     <div class="container-fluid">
-
       <a class="navbar-brand fw-bold" href="#">
         <img src="../../assets/logo-openfuture/OpenFuture_Name_Transparent_Logo.png" width="170" alt="logo"
           class="logo logo-display p-3">
       </a>
-      
+
       <div class="d-flex align-items-center justify-content-center gap-4">
         <a class="nav-link fw-bold " aria-current="page" href="#">Time Start : {{ countdownDisplay }}</a>
-        <button class="btn btn-success text-white px-2 py-1 " type="submit">
+        <button class="btn btn-success text-white px-2 py-1" type="submit">
           Contact Us
         </button>
       </div>
-
     </div>
   </nav>
 
-
-  <div class="d-flex justify-content-center align-items-center">
-    <div class="quiz-container">
-      <form id="quizForm">
-        <!-- Question 1 -->
-        <div class="mb-4 question">
-          <p>1. What is 5 + 3?</p>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" name="q1" value="6" id="q1a" />
-            <label class="form-check-label" for="q1a">6</label>
+  <div class="container-fluid">
+    <!-- Quiz Form -->
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="quiz-container">
+        <form id="quizForm">
+          <div *ngIf="loading">
+            <p>Loading questions...</p>
           </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" name="q1" value="7" id="q1b" />
-            <label class="form-check-label" for="q1b">7</label>
+  
+          <!-- Questions -->
+          <div *ngIf="!loading">
+            <div *ngFor="let question of questions; let i = index" class="mb-4 question">
+              <p>{{ i + 1 }}. {{ question.questionText }}</p>
+              <div *ngFor="let option of question.options" class="form-check">
+                <input 
+                  type="radio" 
+                  class="form-check-input" 
+                  [name]="'q' + question.id" 
+                  [value]="option" 
+                  id="{{ 'q' + question.id + option }}">
+                <label 
+                  class="form-check-label" 
+                  [for]="'q' + question.id + option">
+                  {{ option }}
+                </label>
+              </div>
+            </div>
           </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" name="q1" value="8" id="q1c" />
-            <label class="form-check-label" for="q1c">8</label>
+  
+          <!-- Submit Button -->
+          <div>
+            <button type="button" class="btn btn-primary fw-bold p-2 px-4" (click)="onSubmit()">
+              Submit
+            </button>
           </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" name="q1" value="9" id="q1d" />
-            <label class="form-check-label" for="q1d">9</label>
-          </div>
+        </form>
+  
+        <!-- Result Section -->
+        <div *ngIf="showResult" class="mt-4">
+          <h3>Quiz Result</h3>
+          <p><strong>Score:</strong> {{ score }} / {{ questions.length }}</p>
+          <p><strong>Attempted Questions:</strong> {{ attemptedQuestions }} / {{ questions.length }}</p>
         </div>
-
-        <!-- Question 2 -->
-        <div class="mb-4 question">
-          <p>2. What is 10 - 4?</p>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" name="q2" value="5" id="q2a" />
-            <label class="form-check-label" for="q2a">5</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" name="q2" value="6" id="q2b" />
-            <label class="form-check-label" for="q2b">6</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" name="q2" value="7" id="q2c" />
-            <label class="form-check-label" for="q2c">7</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" name="q2" value="8" id="q2d" />
-            <label class="form-check-label" for="q2d">8</label>
-          </div>
-        </div>
-
-        <!-- Repeat similar format for all other questions -->
-
-
-
-        <!-- Submit Button -->
-        <div class="">
-          <button type="button" class="btn btn-primary fw-bold p-2 px-4" onclick="">
-            Submit
-          </button>
-        </div>
-
-      </form>
-      <div id="result" class="result"></div>
+      </div>
     </div>
   </div>
+  
 </div>
-
-<!--
-<script>
-    function submitQuiz() {
-        let score = 0;
-
-        // Correct Answers
-        const answers = {
-            q1: "8",
-            q2: "6",
-        };
-
-        // Check answers
-        for (const [key, value] of Object.entries(answers)) {
-            const selected = document.querySelector(`input[name="${key}"]:checked`);
-            if (selected && selected.value === value) {
-                score++;
-            }
-        }
-
-        document.getElementById('result').innerText = `Your Score: ${score}/${Object.keys(answers).length}`;
-    }
-
-</script> -->

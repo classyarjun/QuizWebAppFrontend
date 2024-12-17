@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>Add New Question</h2>
+  <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+    <!-- Question Text -->
+    <div>
+      <label>Question Text:</label>
+      <input type="text" formControlName="questionText" placeholder="Enter question" />
+    </div>
+
+    <!-- Options -->
+    <div formArrayName="options">
+      <div *ngFor="let option of options.controls; let i = index" [formGroupName]="i">
+        <label>Option {{ i + 1 }}:</label>
+        <input type="text" formControlName="option" placeholder="Enter option" />
+        <button type="button" (click)="removeOption(i)" *ngIf="options.length > 1">Remove</button>
+      </div>
+      <button type="button" (click)="addOption()">Add Option</button>
+    </div>
+
+    <!-- Correct Answer -->
+    <div>
+      <label>Correct Answer:</label>
+      <input type="text" formControlName="correctAnswer" placeholder="Correct answer" />
+    </div>
+
+    <!-- Domain -->
+    <div>
+      <label>Domain:</label>
+      <input type="text" formControlName="domain" placeholder="Enter domain e.g., Java" />
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="!questionForm.valid">Submit</button>
+  </form>
+</div>

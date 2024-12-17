@@ -8,7 +8,7 @@ import { Student } from 'src/modal/student';
 })
 export class StudentServiceService {
 
-  private apiUrl = 'http://localhost:9090/api/students'; // Backend URL
+  private apiUrl = 'http://localhost:8080/api/students'; // Backend URL
 
   constructor(private http: HttpClient) {}
 
