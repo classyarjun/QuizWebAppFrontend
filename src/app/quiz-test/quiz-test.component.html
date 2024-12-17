@@ -1,3 +1,5 @@
+
+
 <div class="container-fluid">
   <nav class="navbar navbar-expand-lg navbar-light shadow-lg p-3">
     <div class="container-fluid">
@@ -7,7 +9,10 @@
       </a>
 
       <div class="d-flex align-items-center justify-content-center gap-4">
-        <a class="nav-link fw-bold" aria-current="page" href="#">Time Remaining: {{ countdownDisplay }}</a>
+        <a class="nav-link fw-bold " aria-current="page" href="#">Time Start : {{ countdownDisplay }}</a>
+        <button class="btn btn-success text-white px-2 py-1" type="submit">
+          Contact Us
+        </button>
       </div>
     </div>
   </nav>
@@ -16,7 +21,8 @@
     <!-- Quiz Form -->
     <div class="d-flex justify-content-center align-items-center">
       <div class="quiz-container">
-        <form id="quizForm" *ngIf="!showResult">
+
+        <form id="quizForm">
           <div *ngIf="loading">
             <p>Loading questions...</p>
           </div>
@@ -31,8 +37,7 @@
                   class="form-check-input"
                   [name]="'q' + question.id"
                   [value]="option"
-                  id="{{ 'q' + question.id + option }}"
-                  (change)="question.selectedOption = option" />
+                  id="{{ 'q' + question.id + option }}">
                 <label
                   class="form-check-label"
                   [for]="'q' + question.id + option">
@@ -56,7 +61,23 @@
           <p><strong>Score:</strong> {{ score }} / {{ questions.length }}</p>
           <p><strong>Attempted Questions:</strong> {{ attemptedQuestions }} / {{ questions.length }}</p>
         </div>
+
+        <!-- <div  class="mt-4">
+          <h3>Quiz Result</h3>
+          <p><strong>Score:</strong> {{ questions.length }}</p>
+          <p><strong>Attempted Questions:</strong> {{ questions.length }}</p>
+        </div> -->
+
+
       </div>
     </div>
   </div>
+
 </div>
+
+
+
+
+
+
+
