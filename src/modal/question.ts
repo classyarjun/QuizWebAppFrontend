@@ -5,4 +5,5 @@ export class Question {
   options: string[] = [];
   correctAnswer: string = '';
   domain: string = ''; // e.g., Java, Python
+  selectedOption?: string;
 }

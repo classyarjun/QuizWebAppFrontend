@@ -9,6 +9,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TestReadmeComponent } from './test-readme/test-readme.component';
 import { QuizTestComponent } from './quiz-test/quiz-test.component';
 import { TestingComponent } from './testing/testing.component';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { TestingComponent } from './testing/testing.component';
     DashboardComponent,
     TestReadmeComponent,
     QuizTestComponent,
-    TestingComponent
+    TestingComponent,
+    AdminloginComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -7,14 +7,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TestReadmeComponent } from './test-readme/test-readme.component';
 import { QuizTestComponent } from './quiz-test/quiz-test.component';
 import { TestingComponent } from './testing/testing.component';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 
 const routes: Routes = [
-  // { path: '', component: HomeComponent },
   { path: '', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'test-readme', component:TestReadmeComponent },
   { path: 'quiz-test', component:QuizTestComponent },
+  { path: 'adminlogin', component:AdminloginComponent },
+  { path: 'admin-dashboard', component:AdminDashboardComponent},
   { path: 'testing', component:TestingComponent },
 ];
 
