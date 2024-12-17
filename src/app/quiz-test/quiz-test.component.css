@@ -1,0 +1,38 @@
+* {
+
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.quiz-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px auto;
+  width: 80%;
+
+}
+
+.question p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.question label {
+  cursor: pointer;
+}
+
+.form-check {
+  margin-left: 1rem;
+
+}
+
+.result {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}

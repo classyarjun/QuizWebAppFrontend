@@ -1,0 +1,84 @@
+<!--!--------------- // working code //------------------------>
+<div class="parent" style="background-image: url('https://images.pexels.com/photos/19679/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');background-repeat: no-repeat; background-size: cover;height:100vh">
+<div class="container">
+  <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+    <div class="user fs-1 text-center text-success m-3 fw-semibold ">User Register</div>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <label>Name</label>
+        <input type="text" formControlName="name" class="form-control" />
+        <div *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched">
+          <span class="text-danger">Name is required.</span>
+        </div>
+      </div>
+
+      <div class="col-md-6 form-group">
+        <label>Email</label>
+        <input type="email" formControlName="emailId" class="form-control" />
+        <div *ngIf="studentForm.get('emailId')?.invalid && studentForm.get('emailId')?.touched">
+          <span class="text-danger">Valid email is required.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <label>Mobile Number</label>
+        <input type="text" formControlName="mono" class="form-control" />
+        <div *ngIf="studentForm.get('mono')?.invalid && studentForm.get('mono')?.touched">
+          <span class="text-danger">Mobile number must be 10 digits.</span>
+        </div>
+      </div>
+
+      <div class="col-md-6 form-group">
+        <label>Graduate Years</label>
+        <input type="number" formControlName="graduateYears" class="form-control" />
+        <div *ngIf="studentForm.get('graduateYears')?.invalid && studentForm.get('graduateYears')?.touched">
+          <span class="text-danger">Graduate years must be at least 1.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <label>Department Name</label>
+        <input type="text" formControlName="departmentName" class="form-control" />
+        <div *ngIf="studentForm.get('departmentName')?.invalid && studentForm.get('departmentName')?.touched">
+          <span class="text-danger">Department name is required.</span>
+        </div>
+      </div>
+
+      <div class="col-md-6 form-group">
+        <label>Passout Year</label>
+        <input type="number" formControlName="passoutYears" class="form-control" />
+        <div *ngIf="studentForm.get('passoutYears')?.invalid && studentForm.get('passoutYears')?.touched">
+          <span class="text-danger">Passout year must be between 2020 and 2024.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <label>College Name</label>
+        <input type="text" formControlName="collegeName" class="form-control" />
+        <div *ngIf="studentForm.get('collegeName')?.invalid && studentForm.get('collegeName')?.touched">
+          <span class="text-danger">College name is required.</span>
+        </div>
+      </div>
+
+      <div class="col-md-6 form-group">
+        <label>Interest Domain</label>
+        <input type="text" formControlName="interestDomain" class="form-control" />
+        <div *ngIf="studentForm.get('interestDomain')?.invalid && studentForm.get('interestDomain')?.touched">
+          <span class="text-danger">Interest Domain is required.</span>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="studentForm.invalid">Submit</button>
+  </form>
+</div>
+</div>
+
+
+ <!--* -------------------// testing code //-------------------------------------------->

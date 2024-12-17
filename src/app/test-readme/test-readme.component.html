@@ -1,0 +1,95 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light shadow-lg p-3">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#">
+        <img src="../../assets/logo-openfuture/OpenFuture_Name_Transparent_Logo.png" width="170" alt="logo" class="logo logo-display p-1" >
+       </a>
+
+       <!-- <div class="d-flex align-items-start justify-content-start gap-4"> -->
+        <a class="nav-link fw-bold" aria-current="page" >Online Assessment</a>
+        <button class="btn btn-success text-white px-2 py-1 " type="submit">
+          Contact Us
+        </button>
+      <!-- </div> -->
+
+    </div>
+  </nav>
+
+
+
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="container my-5">
+      <!-- Certification Banner -->
+      <div class="certification-badge">
+        <strong>Certification</strong>
+        <p class="mb-0">We will issue you a free certificate of achievement
+          <a href="#" class="text-decoration-none text-success">if you score in the top 80%</a>.
+        </p>
+      </div>
+
+      <!-- Main Box -->
+      <div class="custom-box">
+        <!-- Duration -->
+        <div class="mb-4">
+          <div class=" justify-content-between">
+            <div><strong>⏲Time Duration</strong></div>
+            <div class="ms-4">45 minutes <small>(Total time to attempt the assessment)</small></div>
+          </div>
+        </div>
+
+        <!-- Do and Don't -->
+        <div class="mb-4">
+          <p class="text-success mb-1">✔ <strong>Do</strong></p>
+          <p class="ms-4">You are permitted to use common references and tools, such as help files or a calculator.</p>
+
+          <p class="text-danger mb-1">✖ <strong>Don't</strong></p>
+          <p class="ms-4">
+            You are not permitted to seek or submit solutions from any other source. <br>
+            Do not copy or share any test content with any other website or person.
+          </p>
+        </div>
+
+        <!-- Preparation -->
+        <div class="mb-4">
+          <p><strong>🖥 Read the rules carefully before starting</strong></p>
+          <ul class="ms-4">
+            <li>You can only attempt this assessment once.</li>
+            <li>You will not be able to pause the assessment after starting.</li>
+            <li>You are not allowed to switch tabs during the assessment; otherwise, you will be blocked from the
+              assessment.</li>
+            <li>You will get a detailed report on your performance at the end of the assessment.</li>
+          </ul>
+          <!-- <div class="d-flex align-items-center">
+                    <label for="ecmaScript" class="me-2">Practice with this question to prepare for your test:</label>
+                    <select id="ecmaScript" class="form-select w-auto">
+                        <option selected>ECMAScript 7</option>
+                    </select>
+                </div> -->
+        </div>
+
+        <!-- Legal -->
+        <div class="form-check mb-3 ms-4">
+          <input type="checkbox" class="form-check-input" id="legalAgreement" [(ngModel)]="isAgreed">
+          <label class="form-check-label terms-text" for="legalAgreement">
+            I have read all of the above and I agree with the
+            <a  class="text-decoration-none">terms of use</a> and the
+            <a  class="text-decoration-none">privacy policy</a>.
+          </label>
+        </div>
+        <!-- <a href="quiz-test"> -->
+        <!-- Start Button -->
+        <div class="text-center">
+          <button class="btn btn-primary px-4 py-2" (click)="navigateToAbout()" [disabled]="!isAgreed">
+            Start Assessment
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- <footer class="text-center mt-5 text-muted small">
+        <p>TestDome is an online skills tests platform that uses work-sample testing methodology to screen knowledge workers.</p>
+        <p>Candidates are evaluated through small samples of actual work that show how they solve problems in the real world.</p>
+    </footer> -->
+
+  </div>

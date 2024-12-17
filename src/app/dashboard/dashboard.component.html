@@ -1,0 +1,64 @@
+
+<!-- navbar start -->
+
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="#">Online Exam</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Link</a>
+        </li>
+      </ul>
+      <button class="btn btn-outline-dark fw-bold" type="submit">Contact Us</button>
+    </div>
+  </div>
+</nav>
+
+<!-- navbar end -->
+<!-- second countainer -->
+
+<div class="container">
+  <h2>Student Dashboard</h2>
+
+  <div *ngIf="student; else noData">
+    <h3>Student Details:</h3>
+    <ul>
+      <li><strong>Name:</strong> {{ student.name }}</li>
+      <li><strong>Email:</strong> {{ student.emailId }}</li>
+      <li><strong>Mobile Number:</strong> {{ student.mono }}</li>
+      <li><strong>Graduate Years:</strong> {{ student.graduateYears }}</li>
+      <li><strong>Department Name:</strong> {{ student.departmentName }}</li>
+      <li><strong>Passout Years:</strong> {{ student.passoutYears }}</li>
+      <li><strong>College Name:</strong> {{ student.collegeName }}</li>
+      <li><strong>Interest Domain:</strong> {{ student.interestDomain }}</li>
+    </ul>
+    <button class="btn btn-primary">  Next</button>
+  </div>
+
+  <ng-template #noData>
+    <p>No student data available.</p>
+  </ng-template>
+</div>

@@ -1,0 +1,72 @@
+/* src/app/components/student-form/student-form.component.css */
+.parent{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.container {
+  max-width: 600px; /* Limit the width of the form */
+  margin: auto;
+  padding: 30px; /* Add padding around the form */
+  background-color: #ffffff; /* White background for the form */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+h2 {
+  text-align: center; /* Center the heading */
+  margin-bottom: 30px; /* Space below the heading */
+  color: #333; /* Dark color for the heading */
+  font-family: 'Arial', sans-serif; /* Font style */
+}
+
+.form-group {
+  margin-bottom: 20px; /* Space between form groups */
+}
+
+label {
+  font-weight: bold; /* Bold labels */
+  color: #555; /* Darker color for labels */
+  margin-bottom: 5px; /* Space below the label */
+}
+
+input {
+  width: 100%; /* Full width input fields */
+  padding: 10px; /* Padding inside input fields */
+  border: 1px solid #ced4da; /* Light border */
+  border-radius: 5px; /* Rounded input fields */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+  font-size: 16px; /* Font size for input */
+}
+
+input:focus {
+  border-color: #007bff; /* Change border color on focus */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add shadow on focus */
+}
+
+.invalid-feedback {
+  color: #dc3545; /* Red color for error messages */
+  font-size: 0.875em; /* Smaller font size for error messages */
+  margin-top: 5px; /* Space above error messages */
+}
+
+.btn {
+  width: 100%; /* Full width buttons */
+  padding: 12px; /* Padding for buttons */
+  font-size: 16px; /* Larger font size for buttons */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded button corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.btn-success {
+  background-color: #28a745; /* Green background */
+  color: white; /* White text */
+}
+
+.btn-success:hover {
+  background-color: #218838; /* Darker green on hover */
+}
