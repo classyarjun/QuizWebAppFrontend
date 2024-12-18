@@ -50,7 +50,7 @@
 
       <div class="col-md-6 form-group">
         <label>Passout Year</label>
-        <input type="number" formControlName="passoutYears" class="form-control" />
+        <input type="text" formControlName="passoutYears" class="form-control" />
         <div *ngIf="studentForm.get('passoutYears')?.invalid && studentForm.get('passoutYears')?.touched">
           <span class="text-danger">Passout year must be between 2020 and 2024.</span>
         </div>
@@ -66,13 +66,35 @@
         </div>
       </div>
 
-      <div class="col-md-6 form-group">
+      <!-- <div class="col-md-6 form-group">
         <label>Interest Domain</label>
         <input type="text" formControlName="interestDomain" class="form-control" />
         <div *ngIf="studentForm.get('interestDomain')?.invalid && studentForm.get('interestDomain')?.touched">
           <span class="text-danger">Interest Domain is required.</span>
         </div>
+      </div> -->
+
+
+       <div class="col-md-6 form-group">
+        <label for="interestDomain">Interest Domain</label>
+        <select id="interestDomain" formControlName="interestDomain" class="form-control">
+          <option value="" disabled selected>Select your interest domain</option>
+          <option value="java">Java</option>
+          <option value="devops">DevOps</option>
+          <option value="python">Python</option>
+          <option value="javascript">JavaScript</option>
+          <!-- Add more options as needed -->
+        </select>
+        <div *ngIf="studentForm.get('interestDomain')?.invalid && studentForm.get('interestDomain')?.touched">
+          <span class="text-danger">Interest Domain is required.</span>
+        </div>
       </div>
+
+
+
+
+
+
     </div>
 
     <button type="submit" class="btn btn-success" [disabled]="studentForm.invalid">Submit</button>

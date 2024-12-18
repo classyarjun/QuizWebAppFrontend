@@ -34,7 +34,7 @@
           </div>
           <div>
             <!-- <i class="fas fa-bell me-3"></i> -->
-            <button class="btn btn-outline-dark btn-sm">
+            <button class="btn btn-outline-dark btn-sm" (click)="logout()">
               <img
                 src="https://thumbs.dreamstime.com/b/customer-support-service-agent-headset-flat-vector-icon-design-designs-153069456.jpg"
                 class="rounded-circle img-fluid" alt="User" style="width: 40px; height: 40px" />
@@ -144,10 +144,12 @@
                       <th>Name</th>
                       <th>Email</th>
                       <th>Contact</th>
+                      <th>Domain</th>
                       <th>Score</th>
-                      <th>AttemptQuestions</th>
+                      <th>Attempt Questions</th>
+                      <!-- <th>Total Questions</th> -->
                       <th>status</th>
-                      <th>Actions</th>
+                      <!-- <th>Actions</th> -->
                     </tr>
                   </thead>
                   <tbody>
@@ -161,17 +163,18 @@
                       <td>{{ score.name }}</td>
                       <td>{{ score.email }}</td>
                       <td>{{ score.contactNo || 'N/A' }}</td>
+                      <td>{{ score.domain }}</td>
                       <td>{{ score.score }}</td>
                       <td>{{ score.attemptQuestions }}</td>
+                      <!-- <td>{{ score.totalQuestions }}</td> -->
                       <td>{{ score.status }}</td>
                       <td>
 
-                        <div class="d-flex gap-2 align-items-center">
+                      <div class="d-flex gap-2 align-items-center">
 
-
-                          <button class="btn btn-success btn-sm">
+                          <!-- <button class="btn btn-success btn-sm">
                            View
-                          </button>
+                          </button> -->
 
                         </div>
                       </td>

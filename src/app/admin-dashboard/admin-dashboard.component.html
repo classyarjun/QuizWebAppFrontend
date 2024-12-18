@@ -7,8 +7,10 @@
     <nav class="col-4 col-md-4 col-lg-2 sidebar sticky-top">
       <div class="text-center my-3">
 
-          <img width="100" src="https://thumbs.dreamstime.com/b/customer-support-service-agent-headset-flat-vector-icon-design-designs-153069456.jpg" alt="administrator-male--v1"/>
-          <h5 class="text-white">Admin</h5>
+        <img width="100"
+          src="https://thumbs.dreamstime.com/b/customer-support-service-agent-headset-flat-vector-icon-design-designs-153069456.jpg"
+          alt="administrator-male--v1" />
+        <h5 class="text-white">Admin</h5>
       </div>
       <hr />
       <ul class="nav flex-column mx-5">
@@ -34,7 +36,7 @@
         </div>
         <div>
           <!-- <i class="fas fa-bell me-3"></i> -->
-          <button class="btn btn-outline-dark btn-sm">
+          <button class="btn btn-outline-dark btn-sm" (click)="logout()">
             <img
               src="https://thumbs.dreamstime.com/b/customer-support-service-agent-headset-flat-vector-icon-design-designs-153069456.jpg"
               class="rounded-circle img-fluid" alt="User" style="width: 40px; height: 40px" />
@@ -63,38 +65,48 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-               <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
-                <!-- Question Text -->
-                <div>
-                  <label>Question Text:</label>
-                  <input type="text" formControlName="questionText" placeholder="Enter question" />
-                </div>
+                  <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+                    <!-- Question Text -->
+                    <div>
+                      <label>Question Text:</label>
+                      <input type="text" formControlName="questionText" placeholder="Enter question" />
+                    </div>
 
-                <!-- Options -->
-                <div formArrayName="options">
-                  <div *ngFor="let option of options.controls; let i = index" [formGroupName]="i">
-                    <label>Option {{ i + 1 }}:</label>
-                    <input type="text" formControlName="option" placeholder="Enter option" />
-                    <button type="button" (click)="removeOption(i)" *ngIf="options.length > 1">Remove</button>
-                  </div>
-                  <button type="button" (click)="addOption()">Add Option</button>
-                </div>
+                    <!-- Options -->
+                    <div formArrayName="options">
+                      <div *ngFor="let option of options.controls; let i = index" [formGroupName]="i">
+                        <label>Option {{ i + 1 }}:</label>
+                        <input type="text" formControlName="option" placeholder="Enter option" />
+                        <button type="button" (click)="removeOption(i)" *ngIf="options.length > 1">Remove</button>
+                      </div>
+                      <button type="button" (click)="addOption()">Add Option</button>
+                    </div>
 
-                <!-- Correct Answer -->
-                <div>
-                  <label>Correct Answer:</label>
-                  <input type="text" formControlName="correctAnswer" placeholder="Correct answer" />
-                </div>
+                    <!-- Correct Answer -->
+                    <div>
+                      <label>Correct Answer:</label>
+                      <input type="text" formControlName="correctAnswer" placeholder="Correct answer" />
+                    </div>
 
-                <!-- Domain -->
-                <div>
+                    <!-- Domain -->
+                    <!-- <div>
                   <label>Domain:</label>
                   <input type="text" formControlName="domain" placeholder="Enter domain e.g., Java" />
+                </div> -->
+
+                <div>
+                  <label for="questionType">Question type:</label>
+                  <select formControlName="domain" id="questionType" class="large-dropdown">
+                    <option value="" selected>Select a Question type</option>
+                    <option value="quantity">Aptitude Question</option>
+                    <option value="logical">Logical Reasoning</option>
+                    <option value="coding">Coding</option>
+                  </select>
                 </div>
 
-                <!-- Submit Button -->
-                <button type="submit" [disabled]="!questionForm.valid">Submit</button>
-              </form>
+                    <!-- Submit Button -->
+                    <button type="submit" [disabled]="!questionForm.valid">Submit</button>
+                  </form>
 
 
 
@@ -107,7 +119,7 @@
 
           <!-- ==========================  delet Modal ========================================= -->
 
-<!-- <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" #deleteModal>
+          <!-- <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" #deleteModal>
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -132,7 +144,7 @@
               <h5 class="btn">Available Questions</h5>
               <div class="float-end">
                 <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#CreateModal">
-                   + Add Question
+                  + Add Question
                 </button>
               </div>
             </div>
@@ -158,7 +170,8 @@
                   domain: string = ''; // e.g., Java, Python -->
 
                   <!-- ! Repeat table job entries -->
-                   <tr *ngFor="let question of questions ; let i=index">
+
+                  <tr *ngFor="let question of questions ; let i=index">
                     <td> {{ i + 1 }}</td>
                     <td>{{ question.questionText }}</td>
                     <td>{{ question.correctAnswer }}</td>
@@ -173,8 +186,8 @@
                           <i class="fa-solid fa-pen"></i>
                         </button> -->
 
-                        <button class="btn btn-danger btn-sm">
-                         Delete
+                        <button class="btn btn-danger btn-sm" (click)="onDelete(question.id)">
+                          Delete
                         </button>
 
                       </div>

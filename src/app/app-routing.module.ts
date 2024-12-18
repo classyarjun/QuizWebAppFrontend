@@ -10,6 +10,7 @@ import { TestingComponent } from './testing/testing.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminAllUsersComponent } from './admin-all-users/admin-all-users.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,9 @@ const routes: Routes = [
   { path: 'testing', component:TestingComponent },
   { path: 'admin-dashboard', component:AdminDashboardComponent},
   { path: 'admin-all-users', component:AdminAllUsersComponent },
+  { path: 'contact-us', component:ContactUsComponent},
+
+
 ];
 
 @NgModule({

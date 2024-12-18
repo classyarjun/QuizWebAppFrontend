@@ -12,6 +12,7 @@ import { TestingComponent } from './testing/testing.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminAllUsersComponent } from './admin-all-users/admin-all-users.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AdminAllUsersComponent } from './admin-all-users/admin-all-users.compon
     TestingComponent,
     AdminloginComponent,
     AdminDashboardComponent,
-    AdminAllUsersComponent
+    AdminAllUsersComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,

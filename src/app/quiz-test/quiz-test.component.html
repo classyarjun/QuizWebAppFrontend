@@ -5,14 +5,21 @@
     <div class="container-fluid">
       <a class="navbar-brand fw-bold" href="#">
         <!-- <img src="../../assets/logo-openfuture/OpenFuture_Name_Transparent_Logo.png" width="170" alt="logo" -->
-          class="logo logo-display p-3">
+          <!-- class="logo logo-display p-3"> -->
       </a>
 
       <div class="d-flex align-items-center justify-content-center gap-4">
         <a class="nav-link fw-bold " aria-current="page" href="#">Time Start : {{ countdownDisplay }}</a>
+
+<!--
         <button class="btn btn-success text-white px-2 py-1" type="submit">
           Contact Us
-        </button>
+        </button> -->
+
+        <!-- <button class="btn btn-success text-white px-2 py-1" [routerLink]="['/contact-us']">
+          Contact Us
+        </button> -->
+
       </div>
     </div>
   </nav>
@@ -56,7 +63,7 @@
         </form>
 
         <!-- Result Section -->
-        <div *ngIf="showResult" class="mt-4">
+         <div *ngIf="showResult" class="mt-4">
           <h3>Quiz Result</h3>
           <p><strong>Score:</strong> {{ score }} / {{ questions.length }}</p>
           <p><strong>Attempted Questions:</strong> {{ attemptedQuestions }} / {{ questions.length }}</p>

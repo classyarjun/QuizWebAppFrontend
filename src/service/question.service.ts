@@ -29,16 +29,19 @@ export class QuestionService {
 
   // Get a question by ID
   getQuestionById(id: number): Observable<Question> {
-    return this.http.get<Question>(`$${NAV_URL}/questions${id}`);
+    return this.http.get<Question>(`${NAV_URL}/questions/${id}`);
   }
 
   // Update a question
   updateQuestion(id: number, question: Question): Observable<Question> {
-    return this.http.put<Question>(`${NAV_URL}/questions${id}`, question);
+    return this.http.put<Question>(`${NAV_URL}/questions/${id}`, question);
   }
 
   // Delete a question
   deleteQuestion(id: number): Observable<void> {
-    return this.http.delete<void>(`${NAV_URL}/questions${id}`);
+    return this.http.delete<void>(`${NAV_URL}/questions/${id}`);
   }
+
+
+
 }

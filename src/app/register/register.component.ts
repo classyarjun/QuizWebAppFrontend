@@ -33,13 +33,6 @@ export class RegisterComponent {
         next: (response) => {
           console.log('Student saved successfully:', response);
 
-
-          // localStorage.setItem('student', JSON.stringify({
-          //   name: student.name.trim(),
-          //   emailId: student.emailId.toLowerCase(),
-          //   mono: student.mono.trim(),
-          // }));
-
            // Store the user data in localStorage
         localStorage.setItem('studentData', JSON.stringify(student));
           alert('Form submitted successfully..!');

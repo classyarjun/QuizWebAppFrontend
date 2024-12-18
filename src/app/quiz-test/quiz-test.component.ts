@@ -2,6 +2,7 @@ import { QuestionService } from './../../service/question.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Question } from 'src/modal/question';
 import { UserScoreService } from './../../service/user-score.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz-test',
@@ -19,10 +20,14 @@ export class QuizTestComponent implements OnInit, OnDestroy {
   showResult: boolean = false;
   error: string = '';
 
+  // constructor(private fb: FormBuilder, private studentService: StudentServiceService,private router: Router) {
+
+
   // Loading state
   constructor(
     private questionService: QuestionService,
-    private UserScoreService: UserScoreService
+    private UserScoreService: UserScoreService,
+    private router: Router
   ) {
     this.timeInSecs = 45 * 60; // 5 minutes in seconds
     this.countdownDisplay = this.formatTime(this.timeInSecs);
@@ -77,6 +82,7 @@ export class QuizTestComponent implements OnInit, OnDestroy {
       (data) => {
         this.questions = data;
         this.loading = false;
+        // const questionCount = this.questions.length;
       },
       (error) => {
         console.error('Error fetching questions:', error);
@@ -111,22 +117,26 @@ export class QuizTestComponent implements OnInit, OnDestroy {
       name: userData.name?.trim(), // Trim extra spaces
       email: userData.emailId, // Ensure email is lowercase
       contactNo: userData.mono?.trim(), // Trim spaces in contact number
-      score: this.score,
+      // score: this.score, //correct answer score
+      correctAnswers: this.score, //correct answer score
       attemptQuestions: this.attemptedQuestions,
+      domain:userData.interestDomain,
+      totalQuestions:this.questions.length
     };
 
+    console.log(quizResult);
     // POST result to backend
     this.UserScoreService.createUserScore(quizResult).subscribe(
       (response) => {
         alert('Quiz submitted successfully!');
         this.showResult = true;
+        this.router.navigate(['']);
       },
       (error) => {
         console.error('Error submitting quiz result:', error);
         alert('Something went wrong while submitting the quiz.');
       }
     );
-
     this.showResult = true;
     console.log(
       `Score: ${this.score}, Attempted Questions: ${this.attemptedQuestions}`
