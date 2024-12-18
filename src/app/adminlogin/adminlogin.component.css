@@ -5,27 +5,54 @@
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+ }
 
-h2 {
+ h2 {
   text-align: center;
   margin-bottom: 20px;
-}
+ }
 
-label {
+ label {
   display: block;
   margin-bottom: 8px;
-}
+ }
 
-input {
+ .password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+ }
+
+ .password-container input {
+  width: 100%;
+  padding-right: 40px; /* Add space for the eye icon */
+ }
+
+ .password-container .eye-icon {
+  position: absolute;
+  left: 110px;
+  top: 35%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0a0404;
+  font-size: 16px;
+ }
+
+ .password-container .eye-icon:hover {
+  color: #0a0909;
+ }
+
+ input {
   width: 100%;
   padding: 8px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
+ }
 
-button {
+ button {
   width: 100%;
   padding: 10px;
   background-color: #4CAF50;
@@ -33,8 +60,8 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
-
-button:hover {
+ }
+  
+ button:hover {
   background-color: #45a049;
-}
+ }
