@@ -11,6 +11,7 @@ import { QuizTestComponent } from './quiz-test/quiz-test.component';
 import { TestingComponent } from './testing/testing.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminAllUsersComponent } from './admin-all-users/admin-all-users.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     QuizTestComponent,
     TestingComponent,
     AdminloginComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    AdminAllUsersComponent
   ],
   imports: [
     BrowserModule,

@@ -11,15 +11,17 @@
           <h5 class="text-white">Admin</h5>
       </div>
       <hr />
-      <ul class="nav flex-column mx-5 ">
+      <ul class="nav flex-column mx-5">
         <li class="nav-item mb-2">
-          <a class="nav-link bg-white text-black">
+          <a class="nav-link bg-white text-black" routerLink="/admin-dashboard">
             <i class="fa fa-briefcase text-warning"></i> Dashboard
           </a>
         </li>
-
-
-
+        <li class="nav-item mb-2">
+          <a class="nav-link bg-white text-black" routerLink="/admin-all-users">
+            <i class="fa fa-briefcase text-warning"></i> Student
+          </a>
+        </li>
       </ul>
     </nav>
 
@@ -127,7 +129,7 @@
           <!-- Job Table -->
           <div class="card mt-4">
             <div class="card-header">
-              <h5 class="btn">Available Jobs</h5>
+              <h5 class="btn">Available Questions</h5>
               <div class="float-end">
                 <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#CreateModal">
                    + Add Question

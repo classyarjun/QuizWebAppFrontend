@@ -1,8 +1,7 @@
 import { QuestionService } from './../../service/question.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Question } from 'src/modal/question';
-// import { QuestionService } from '../question.service';
-// import { Question } from '../question.model';
+import { UserScoreService } from './../../service/user-score.service';
 
 @Component({
   selector: 'app-quiz-test',
@@ -19,8 +18,12 @@ export class QuizTestComponent implements OnInit, OnDestroy {
   attemptedQuestions: number = 0;
   showResult: boolean = false;
   error: string = '';
- // Loading state
-  constructor(private questionService: QuestionService) { 
+
+  // Loading state
+  constructor(
+    private questionService: QuestionService,
+    private UserScoreService: UserScoreService
+  ) {
     this.timeInSecs = 45 * 60; // 5 minutes in seconds
     this.countdownDisplay = this.formatTime(this.timeInSecs);
   }
@@ -28,7 +31,6 @@ export class QuizTestComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.startTimer(this.timeInSecs);
     this.fetchQuestions();
-
   }
 
   ngOnDestroy(): void {
@@ -83,11 +85,6 @@ export class QuizTestComponent implements OnInit, OnDestroy {
     );
   }
 
-
-
-
-
-
   onSubmit(): void {
     this.score = 0; // Reset score
     this.attemptedQuestions = 0; // Reset attempted count
@@ -95,8 +92,12 @@ export class QuizTestComponent implements OnInit, OnDestroy {
 
     // Iterate over questions to check answers
     this.questions.forEach((question) => {
-      const selectedOption = (document.querySelector(`input[name="q${question.id}"]:checked`) as HTMLInputElement)?.value;
-      
+      const selectedOption = (
+        document.querySelector(
+          `input[name="q${question.id}"]:checked`
+        ) as HTMLInputElement
+      )?.value;
+
       if (selectedOption) {
         this.attemptedQuestions++; // Increment attempted question count
         if (selectedOption === question.correctAnswer) {
@@ -105,19 +106,30 @@ export class QuizTestComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.showResult = true; // Display result
-    console.log(`Score: ${this.score}, Attempted Questions: ${this.attemptedQuestions}`);
+    const userData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const quizResult: any = {
+      name: userData.name?.trim(), // Trim extra spaces
+      email: userData.emailId, // Ensure email is lowercase
+      contactNo: userData.mono?.trim(), // Trim spaces in contact number
+      score: this.score,
+      attemptQuestions: this.attemptedQuestions,
+    };
+
+    // POST result to backend
+    this.UserScoreService.createUserScore(quizResult).subscribe(
+      (response) => {
+        alert('Quiz submitted successfully!');
+        this.showResult = true;
+      },
+      (error) => {
+        console.error('Error submitting quiz result:', error);
+        alert('Something went wrong while submitting the quiz.');
+      }
+    );
+
+    this.showResult = true;
+    console.log(
+      `Score: ${this.score}, Attempted Questions: ${this.attemptedQuestions}`
+    );
   }
-
-
-
-
 }
-
-//! testing code
-
-
-
-
-
-

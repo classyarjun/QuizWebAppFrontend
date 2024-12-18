@@ -9,6 +9,7 @@ import { QuizTestComponent } from './quiz-test/quiz-test.component';
 import { TestingComponent } from './testing/testing.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminAllUsersComponent } from './admin-all-users/admin-all-users.component';
 
 
 const routes: Routes = [
@@ -17,8 +18,9 @@ const routes: Routes = [
   { path: 'test-readme', component:TestReadmeComponent },
   { path: 'quiz-test', component:QuizTestComponent },
   { path: 'adminlogin', component:AdminloginComponent },
-  { path: 'admin-dashboard', component:AdminDashboardComponent},
   { path: 'testing', component:TestingComponent },
+  { path: 'admin-dashboard', component:AdminDashboardComponent},
+  { path: 'admin-all-users', component:AdminAllUsersComponent },
 ];
 
 @NgModule({
