@@ -6,7 +6,11 @@
   font-family: 'Poppins', sans-serif;
 }
 
+.navbar{
 
+  background-color: #ffffff;
+
+}
 .quiz-container {
   background-color: #ffffff;
   border-radius: 10px;
