@@ -26,7 +26,7 @@ export class QuizTestComponent implements OnInit, OnDestroy {
     private UserScoreService: UserScoreService,
     private router: Router
   ) {
-    this.timeInSecs = 2 * 60; // Set quiz duration (2 minutes for testing)
+    this.timeInSecs = 45 * 60; // Set quiz duration (2 minutes for testing)
     this.countdownDisplay = this.formatTime(this.timeInSecs);
   }
 
