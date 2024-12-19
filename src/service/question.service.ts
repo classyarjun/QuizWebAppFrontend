@@ -23,8 +23,11 @@ export class QuestionService {
   }
 
   // Get all questions
+  // getQuestions(): Observable<Question[]> {
+  //   return this.http.get<Question[]>(`${NAV_URL}/questions`,);
+  // }
   getQuestions(): Observable<Question[]> {
-    return this.http.get<Question[]>(`${NAV_URL}/questions`,);
+    return this.http.get<Question[]>(`${NAV_URL}/questions/all-types`,);
   }
 
   // Get a question by ID

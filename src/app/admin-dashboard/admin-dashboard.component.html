@@ -89,18 +89,18 @@
                     </div>
 
                     <!-- Domain -->
-                    <!-- <div>
+                  <div>
                   <label>Domain:</label>
                   <input type="text" formControlName="domain" placeholder="Enter domain e.g., Java" />
-                </div> -->
+                </div>
 
                 <div>
                   <label for="questionType">Question type:</label>
-                  <select formControlName="domain" id="questionType" class="large-dropdown">
+                  <select formControlName="questionType" id="questionType" class="large-dropdown">
                     <option value="" selected>Select a Question type</option>
-                    <option value="quantity">Aptitude Question</option>
-                    <option value="logical">Logical Reasoning</option>
-                    <option value="coding">Coding</option>
+                    <option value="APTITUDE">APTITUDE</option>
+                    <option value="LOGICAL_REASONING">LOGICAL_REASONING</option>
+                    <option value="CODE">CODE</option>
                   </select>
                 </div>
 
@@ -157,17 +157,11 @@
                     <th>Question</th>
                     <th>Answer</th>
                     <th>Domain</th>
+                    <th>Question Type</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-
-
-                  <!-- id?: number;
-                  questionText: string = '';
-                  options: string[] = [];
-                  correctAnswer: string = '';
-                  domain: string = ''; // e.g., Java, Python -->
 
                   <!-- ! Repeat table job entries -->
 
@@ -176,6 +170,7 @@
                     <td>{{ question.questionText }}</td>
                     <td>{{ question.correctAnswer }}</td>
                     <td>{{ question.domain }}</td>
+                    <td>{{ question.questionType }}</td>
 
                     <td>
 

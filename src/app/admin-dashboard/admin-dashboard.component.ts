@@ -31,6 +31,7 @@ export class AdminDashboardComponent {
       options: this.fb.array([this.createOption()]), // Start with one option
       correctAnswer: ['', Validators.required],
       domain: ['', Validators.required],
+      questionType: ['', Validators.required],
     });
   }
 
@@ -82,6 +83,7 @@ export class AdminDashboardComponent {
         options: formValue.options.map((o: any) => o.option),
         correctAnswer: formValue.correctAnswer,
         domain: formValue.domain,
+        questionType: formValue.questionType, // Include questionType
       };
 
       this.QuestionService.createQuestion(question).subscribe({
@@ -112,7 +114,6 @@ export class AdminDashboardComponent {
         },
       });
     }
-
   }
 
   logout() {

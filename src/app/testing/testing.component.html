@@ -29,6 +29,18 @@
       <input type="text" formControlName="domain" placeholder="Enter domain e.g., Java" />
     </div>
 
+
+    <div>
+      <label for="questionType">Question type:</label>
+      <select formControlName="questionType" id="questionType" class="large-dropdown">
+        <option value="" selected>Select a Question type</option>
+        <option value="APTITUDE">APTITUDE</option>
+        <option value="LOGICAL_REASONING">LOGICAL_REASONING</option>
+        <option value="CODE">CODE</option>
+      </select>
+    </div>
+
+
     <!-- Submit Button -->
     <button type="submit" [disabled]="!questionForm.valid">Submit</button>
   </form>

@@ -6,4 +6,6 @@ export class Question {
   correctAnswer: string = '';
   domain: string = ''; // e.g., Java, Python
   selectedOption?: string;
+
+  questionType: string = ''; // Added questionType
 }
