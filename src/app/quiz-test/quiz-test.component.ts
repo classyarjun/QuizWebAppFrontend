@@ -1,8 +1,7 @@
-import { QuestionService } from './../../service/question.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Question } from 'src/modal/question';
-import { UserScoreService } from './../../service/user-score.service';
 import { Router } from '@angular/router';
+import { QuestionService } from './../../service/question.service';
+import { UserScoreService } from './../../service/user-score.service';
 
 @Component({
   selector: 'app-quiz-test',
@@ -18,38 +17,42 @@ export class QuizTestComponent implements OnInit, OnDestroy {
   score: number = 0;
   attemptedQuestions: number = 0;
   showResult: boolean = false;
-  error: string = '';
 
-  // constructor(private fb: FormBuilder, private studentService: StudentServiceService,private router: Router) {
-
-
-  // Loading state
   constructor(
     private questionService: QuestionService,
     private UserScoreService: UserScoreService,
     private router: Router
   ) {
-    this.timeInSecs = 45 * 60; // 5 minutes in seconds
+    this.timeInSecs = 45 * 60; // 45 minutes in seconds
     this.countdownDisplay = this.formatTime(this.timeInSecs);
   }
 
   ngOnInit(): void {
     this.startTimer(this.timeInSecs);
     this.fetchQuestions();
+
+    // Add event listener for visibility change
+    document.addEventListener('visibilitychange', this.handleVisibilityChange);
   }
 
   ngOnDestroy(): void {
     clearInterval(this.ticker);
+
+    // Remove event listener for visibility change
+    document.removeEventListener('visibilitychange', this.handleVisibilityChange);
   }
+
+  handleVisibilityChange = (): void => {
+    if (document.visibilityState === 'hidden') {
+      alert('Warning: Dont switched tabs during the quiz. Please stay on the quiz page!');
+    }
+  };
 
   startTimer(secs: number): void {
     this.timeInSecs = secs;
     this.ticker = setInterval(() => this.tick(), 1000);
   }
 
-
-
-  //testing 15-15
   tick(): void {
     if (this.timeInSecs > 0) {
       this.timeInSecs--;
@@ -60,25 +63,10 @@ export class QuizTestComponent implements OnInit, OnDestroy {
     this.countdownDisplay = this.formatTime(this.timeInSecs);
   }
 
-
   formatTime(secs: number): string {
-    const days = Math.floor(secs / 86400);
-    secs %= 86400;
-    const hours = Math.floor(secs / 3600);
-    secs %= 3600;
     const mins = Math.floor(secs / 60);
     secs %= 60;
-
-    return (
-      (days < 10 ? '0' : '') +
-      hours +
-      ':' +
-      (mins < 10 ? '0' : '') +
-      mins +
-      ':' +
-      (secs < 10 ? '0' : '') +
-      secs
-    );
+    return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
   }
 
   fetchQuestions(): void {
@@ -86,7 +74,6 @@ export class QuizTestComponent implements OnInit, OnDestroy {
       (data) => {
         this.questions = data;
         this.loading = false;
-        // const questionCount = this.questions.length;
       },
       (error) => {
         console.error('Error fetching questions:', error);
@@ -121,11 +108,10 @@ export class QuizTestComponent implements OnInit, OnDestroy {
       name: userData.name?.trim(), // Trim extra spaces
       email: userData.emailId, // Ensure email is lowercase
       contactNo: userData.mono?.trim(), // Trim spaces in contact number
-      // score: this.score, //correct answer score
-      correctAnswers: this.score, //correct answer score
+      correctAnswers: this.score, // Correct answer score
       attemptQuestions: this.attemptedQuestions,
-      domain:userData.interestDomain,
-      totalQuestions:this.questions.length
+      domain: userData.interestDomain,
+      totalQuestions: this.questions.length,
     };
 
     console.log(quizResult);
@@ -147,3 +133,4 @@ export class QuizTestComponent implements OnInit, OnDestroy {
     );
   }
 }
+
