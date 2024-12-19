@@ -52,7 +52,7 @@
         <label>Passout Year</label>
         <input type="text" formControlName="passoutYears" class="form-control" />
         <div *ngIf="studentForm.get('passoutYears')?.invalid && studentForm.get('passoutYears')?.touched">
-          <span class="text-danger">Passout year must be between 2020 and 2024.</span>
+          <span class="text-danger">Passout year must be between 2020 and 2030.</span>
         </div>
       </div>
     </div>
@@ -80,9 +80,10 @@
         <select id="interestDomain" formControlName="interestDomain" class="form-control">
           <option value="" disabled selected>Select your interest domain</option>
           <option value="java">Java</option>
-          <option value="devops">DevOps</option>
-          <option value="python">Python</option>
           <option value="javascript">JavaScript</option>
+          <option value="python">Python</option>
+          <option value="devops">DevOps</option>
+          <option value="javascript">Data Science</option>
           <!-- Add more options as needed -->
         </select>
         <div *ngIf="studentForm.get('interestDomain')?.invalid && studentForm.get('interestDomain')?.touched">

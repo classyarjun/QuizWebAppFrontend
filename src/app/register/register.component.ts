@@ -18,7 +18,7 @@ export class RegisterComponent {
       mono: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       graduateYears: ['', [Validators.required, Validators.min(1)]],
       departmentName: ['', Validators.required],
-      passoutYears: ['', [Validators.required, Validators.min(2020), Validators.max(2024)]],
+      passoutYears: ['', [Validators.required, Validators.min(2020), Validators.max(2030)]],
       collegeName: ['', Validators.required],
       interestDomain:  ['', Validators.required],// Initialize with one empty field
     });
