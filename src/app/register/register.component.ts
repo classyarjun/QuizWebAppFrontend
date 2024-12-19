@@ -10,8 +10,15 @@ import { Student } from 'src/modal/student';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+
   studentForm: FormGroup;
-  constructor(private fb: FormBuilder, private studentService: StudentServiceService,private router: Router) {
+  errorMessage: string | null = null;
+
+  constructor(
+    private fb: FormBuilder,
+    private studentService: StudentServiceService,
+    private router: Router
+  ) {
     this.studentForm = this.fb.group({
       name: ['', Validators.required],
       emailId: ['', [Validators.required, Validators.email]],
@@ -20,7 +27,7 @@ export class RegisterComponent {
       departmentName: ['', Validators.required],
       passoutYears: ['', [Validators.required, Validators.min(2020), Validators.max(2030)]],
       collegeName: ['', Validators.required],
-      interestDomain:  ['', Validators.required],// Initialize with one empty field
+      interestDomain: ['', Validators.required]
     });
   }
 
@@ -31,23 +38,36 @@ export class RegisterComponent {
 
       this.studentService.saveStudent(student).subscribe({
         next: (response) => {
-          console.log('Student saved successfully:', response);
-
-           // Store the user data in localStorage
-        localStorage.setItem('studentData', JSON.stringify(student));
-          alert('Form submitted successfully..!');
+          console.log('User registered successfully:', response);
+          // Reset error and form
+          this.errorMessage = null;
+          localStorage.setItem('studentData', JSON.stringify(student));
+          alert('Registration successful!');
           this.studentForm.reset();
           this.router.navigate(['/test-readme']);
         },
         error: (error) => {
-          console.error('Error saving student:', error);
-          alert('Error saving student..!');
-        },
+          console.error('Error during registration:', error);
+          // Check if the backend is sending a message and set the error message
+          if (error.status === 409) {
+            const errorData = error.error;
+            if (errorData) {
+              // Assuming the backend error structure is { error: 'email' or 'mobile' }
+              this.errorMessage = errorData.error;
+            } else {
+              this.errorMessage = 'A conflict occurred during registration.';
+            }
+          } else {
+            this.errorMessage = 'This Email Id or Mobile Number Already Exists';
+          }
+        }
       });
     } else {
       console.log('Form is invalid');
-      alert('Form is invalid');
-      this.router.navigate(['']);
+      this.errorMessage = 'Please fill in the required fields.';
     }
   }
+
 }
+
+ 

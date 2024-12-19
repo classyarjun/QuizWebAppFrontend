@@ -1,74 +1,88 @@
-/* src/app/components/student-form/student-form.component.css */
-.parent{
-display: flex;
-justify-content: center;
-align-items: center;
+.parent {
+  background-image: url('https://images.pexels.com/photos/19679/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
-  max-width: 600px; /* Limit the width of the form */
-  margin: auto;
-  padding: 30px; /* Add padding around the form */
-  background-color: #ffffff; /* White background for the form */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  max-width: 800px;
+  width: 100%;
 }
 
-h2 {
-  text-align: center; /* Center the heading */
-  margin-bottom: 30px; /* Space below the heading */
-  color: #333; /* Dark color for the heading */
-  font-family: 'Arial', sans-serif; /* Font style */
+.form-container {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  padding: 20px 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-card {
+  width: 100%;
+}
+
+.form-title {
+  text-align: center;
+  color: #28a745;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .form-group {
-  margin-bottom: 20px; /* Space between form groups */
+  margin-bottom: 15px;
 }
 
-label {
-  font-weight: bold; /* Bold labels */
-  color: #555; /* Darker color for labels */
-  margin-bottom: 5px; /* Space below the label */
+.form-control {
+  border-radius: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
 }
 
-input {
-  width: 100%; /* Full width input fields */
-  padding: 10px; /* Padding inside input fields */
-  border: 1px solid #ced4da; /* Light border */
-  border-radius: 5px; /* Rounded input fields */
-  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition */
-  font-size: 16px; /* Font size for input */
+.form-control:focus {
+  outline: none;
+  border-color: #28a745;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
 }
 
-input:focus {
-  border-color: #007bff; /* Change border color on focus */
-  outline: none; /* Remove default outline */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add shadow on focus */
-}
-
-.invalid-feedback {
-  color: #dc3545; /* Red color for error messages */
-  font-size: 0.875em; /* Smaller font size for error messages */
-  margin-top: 5px; /* Space above error messages */
+.error-text {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 5px;
+  display: block;
 }
 
 .btn {
-  width: 100%; /* Full width buttons */
-  padding: 12px; /* Padding for buttons */
-  font-size: 16px; /* Larger font size for buttons */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Rounded button corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s; /* Smooth transition for background color */
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1rem;
 }
 
 .btn-success {
-  background-color: #28a745; /* Green background */
-  color: white; /* White text */
+  background-color: #28a745;
+  border: none;
+  color: white;
+  transition: background-color 0.3s;
 }
 
-.btn-success:hover {
-  background-color: #218838; /* Darker green on hover */
+.btn-success:disabled {
+  background-color: #a5d6a7;
+}
+
+.btn-success:hover:not(:disabled) {
+  background-color: #218838;
 }
 
 
+.error-text {
+  color: red;
+  font-size: 0.9rem;
+}
+
+.is-invalid {
+  border-color: red;
+}
