@@ -47,15 +47,28 @@ export class QuizTestComponent implements OnInit, OnDestroy {
     this.ticker = setInterval(() => this.tick(), 1000);
   }
 
+  // tick(): void {
+  //   if (this.timeInSecs > 0) {
+  //     this.timeInSecs--;
+  //   } else {
+  //     clearInterval(this.ticker);
+  //     this.startTimer(5 * 60); // Restart timer for 5 minutes
+  //   }
+  //   this.countdownDisplay = this.formatTime(this.timeInSecs);
+  // }
+
+  //testing 15-15
   tick(): void {
     if (this.timeInSecs > 0) {
       this.timeInSecs--;
     } else {
       clearInterval(this.ticker);
-      this.startTimer(5 * 60); // Restart timer for 5 minutes
+      this.onSubmit(); // Automatically submit the quiz when time ends
     }
     this.countdownDisplay = this.formatTime(this.timeInSecs);
   }
+
+
 
   formatTime(secs: number): string {
     const days = Math.floor(secs / 86400);
